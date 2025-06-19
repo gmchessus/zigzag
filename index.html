@@ -45,7 +45,6 @@
             justify-content: center;
             align-items: center;
             font-size: 14px;
-            cursor: pointer;
         }
         .controls {
             margin-top: 20px;
@@ -78,31 +77,31 @@
 <body>
     <div class="container">
         <h1>Найди предмет на паруснике</h1>
-        <p>Нажми на номер на картинке и введи название части парусника.</p>
+        <p>Я выберу предмет, а ты назови его номер.</p>
         <div class="game-container">
             <div class="image-container">
                 <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/96/95/b4/9695b4d5-5614-4205-957a-87e5e924ff39/c6f68721-176a-4f53-9026-77a2db4839c2/8d051da8-7759-4eda-8227-ada2ccb77e2f?sv=2025-01-05&st=2025-06-19T08%3A18%3A55Z&se=2025-06-19T09%3A18%3A55Z&sr=b&sp=rade&sig=n55HuKAgIkYtzYg3UeYTpTB8iBG%2BVceZvF0pRobY9u4%3D" alt="Парусник">
-                <div class="number" style="top: 10%; left: 50%;" onclick="selectItem(1)">1</div>
-                <div class="number" style="top: 30%; left: 60%;" onclick="selectItem(2)">2</div>
-                <div class="number" style="top: 20%; left: 70%;" onclick="selectItem(3)">3</div>
-                <div class="number" style="top: 60%; left: 50%;" onclick="selectItem(4)">4</div>
-                <div class="number" style="top: 80%; left: 50%;" onclick="selectItem(5)">5</div>
-                <div class="number" style="top: 70%; left: 10%;" onclick="selectItem(6)">6</div>
-                <div class="number" style="top: 80%; left: 20%;" onclick="selectItem(7)">7</div>
-                <div class="number" style="top: 5%; left: 60%;" onclick="selectItem(8)">8</div>
-                <div class="number" style="top: 5%; left: 70%;" onclick="selectItem(9)">9</div>
-                <div class="number" style="top: 5%; left: 40%;" onclick="selectItem(10)">10</div>
-                <div class="number" style="top: 40%; left: 30%;" onclick="selectItem(11)">11</div>
-                <div class="number" style="top: 30%; left: 30%;" onclick="selectItem(12)">12</div>
-                <div class="number" style="top: 70%; left: 80%;" onclick="selectItem(13)">13</div>
-                <div class="number" style="top: 75%; left: 80%;" onclick="selectItem(14)">14</div>
-                <div class="number" style="top: 20%; left: 20%;" onclick="selectItem(15)">15</div>
-                <div class="number" style="top: 20%; left: 80%;" onclick="selectItem(16)">16</div>
-                <div class="number" style="top: 70%; left: 60%;" onclick="selectItem(17)">17</div>
+                <div class="number" style="top: 10%; left: 50%;">1</div>
+                <div class="number" style="top: 30%; left: 60%;">2</div>
+                <div class="number" style="top: 20%; left: 70%;">3</div>
+                <div class="number" style="top: 60%; left: 50%;">4</div>
+                <div class="number" style="top: 80%; left: 50%;">5</div>
+                <div class="number" style="top: 70%; left: 10%;">6</div>
+                <div class="number" style="top: 80%; left: 20%;">7</div>
+                <div class="number" style="top: 5%; left: 60%;">8</div>
+                <div class="number" style="top: 5%; left: 70%;">9</div>
+                <div class="number" style="top: 5%; left: 40%;">10</div>
+                <div class="number" style="top: 40%; left: 30%;">11</div>
+                <div class="number" style="top: 30%; left: 30%;">12</div>
+                <div class="number" style="top: 70%; left: 80%;">13</div>
+                <div class="number" style="top: 75%; left: 80%;">14</div>
+                <div class="number" style="top: 20%; left: 20%;">15</div>
+                <div class="number" style="top: 20%; left: 80%;">16</div>
+                <div class="number" style="top: 70%; left: 60%;">17</div>
             </div>
         </div>
         <div class="controls">
-            <input type="text" id="userInput" placeholder="Введите название части">
+            <input type="text" id="userInput" placeholder="Введите номер предмета">
             <button onclick="checkAnswer()">Проверить</button>
         </div>
         <div class="feedback" id="feedback"></div>
@@ -130,10 +129,12 @@
         };
 
         let selectedItem = null;
+        let itemKeys = Object.keys(items);
 
-        function selectItem(itemNumber) {
-            selectedItem = itemNumber;
-            document.getElementById('feedback').textContent = `Вы выбрали предмет под номером ${itemNumber}. Введите его название.`;
+        function getRandomItem() {
+            let randomIndex = Math.floor(Math.random() * itemKeys.length);
+            selectedItem = itemKeys[randomIndex];
+            document.getElementById('feedback').textContent = `Какой номер у предмета: ${items[selectedItem]}?`;
         }
 
         function checkAnswer() {
@@ -141,18 +142,21 @@
             const feedback = document.getElementById('feedback');
 
             if (selectedItem === null) {
-                feedback.textContent = "Пожалуйста, выберите предмет на картинке.";
+                feedback.textContent = "Пожалуйста, начните новую игру.";
                 return;
             }
 
-            if (userInput.toLowerCase() === items[selectedItem].toLowerCase()) {
+            if (userInput === selectedItem) {
                 feedback.textContent = "Правильно! Молодец!";
                 feedback.className = "feedback correct";
             } else {
-                feedback.textContent = `Неправильно. Правильный ответ: ${items[selectedItem]}.`;
+                feedback.textContent = `Неправильно. Правильный ответ: ${selectedItem}.`;
                 feedback.className = "feedback incorrect";
             }
         }
+
+        // Начинаем новую игру при загрузке страницы
+        window.onload = getRandomItem;
     </script>
 </body>
 </html>
