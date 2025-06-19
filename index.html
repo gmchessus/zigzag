@@ -59,7 +59,8 @@
     </style>
 </head>
 <body>
- 	<div class="game-container">   <a href=mx700.html>mx700</a>
+ 	<div class="game-container">
+    <a href=mx700.html>mx700</a>
     <a href=index.html>x35</a>
     <a href=kursy.html>Курсы</a>
 
@@ -103,7 +104,7 @@
             const randomKey = keys[Math.floor(Math.random() * keys.length)];
             currentItem = randomKey;
             correctAnswer = items[randomKey];
-            document.getElementById("result").textContent = `Какой номер у ${currentItem}?`;
+            document.getElementById("result").textContent = `Найди ${currentItem}?`;
         }
 
         function checkAnswer() {
