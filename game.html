@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найди предмет на паруснике</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container {
+            position: relative;
+            margin-right: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .number {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background-color: #45a049;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Найди предмет на паруснике</h1>
+        <p>Нажми на номер на картинке и введи название части парусника.</p>
+        <div class="game-container">
+            <div class="image-container">
+                <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/96/95/b4/9695b4d5-5614-4205-957a-87e5e924ff39/c6f68721-176a-4f53-9026-77a2db4839c2/8d051da8-7759-4eda-8227-ada2ccb77e2f?sv=2025-01-05&st=2025-06-19T08%3A18%3A55Z&se=2025-06-19T09%3A18%3A55Z&sr=b&sp=rade&sig=n55HuKAgIkYtzYg3UeYTpTB8iBG%2BVceZvF0pRobY9u4%3D" alt="Парусник">
+                <div class="number" style="top: 10%; left: 50%;" onclick="selectItem(1)">1</div>
+                <div class="number" style="top: 30%; left: 60%;" onclick="selectItem(2)">2</div>
+                <div class="number" style="top: 20%; left: 70%;" onclick="selectItem(3)">3</div>
+                <div class="number" style="top: 60%; left: 50%;" onclick="selectItem(4)">4</div>
+                <div class="number" style="top: 80%; left: 50%;" onclick="selectItem(5)">5</div>
+                <div class="number" style="top: 70%; left: 10%;" onclick="selectItem(6)">6</div>
+                <div class="number" style="top: 80%; left: 20%;" onclick="selectItem(7)">7</div>
+                <div class="number" style="top: 5%; left: 60%;" onclick="selectItem(8)">8</div>
+                <div class="number" style="top: 5%; left: 70%;" onclick="selectItem(9)">9</div>
+                <div class="number" style="top: 5%; left: 40%;" onclick="selectItem(10)">10</div>
+                <div class="number" style="top: 40%; left: 30%;" onclick="selectItem(11)">11</div>
+                <div class="number" style="top: 30%; left: 30%;" onclick="selectItem(12)">12</div>
+                <div class="number" style="top: 70%; left: 80%;" onclick="selectItem(13)">13</div>
+                <div class="number" style="top: 75%; left: 80%;" onclick="selectItem(14)">14</div>
+                <div class="number" style="top: 20%; left: 20%;" onclick="selectItem(15)">15</div>
+                <div class="number" style="top: 20%; left: 80%;" onclick="selectItem(16)">16</div>
+                <div class="number" style="top: 70%; left: 60%;" onclick="selectItem(17)">17</div>
+            </div>
+        </div>
+        <div class="controls">
+            <input type="text" id="userInput" placeholder="Введите название части">
+            <button onclick="checkAnswer()">Проверить</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        const items = {
+            1: "Грот",
+            2: "Стаксель",
+            3: "Спинакер",
+            4: "Палуба",
+            5: "Киль",
+            6: "Руль",
+            7: "Корма",
+            8: "Топ мачты",
+            9: "Ванты",
+            10: "Мачта",
+            11: "Люк",
+            12: "Вант-путенсы",
+            13: "Шверт",
+            14: "Швертовый колодец",
+            15: "Фал",
+            16: "Гик",
+            17: "Шкот"
+        };
+
+        let selectedItem = null;
+
+        function selectItem(itemNumber) {
+            selectedItem = itemNumber;
+            document.getElementById('feedback').textContent = `Вы выбрали предмет под номером ${itemNumber}. Введите его название.`;
+        }
+
+        function checkAnswer() {
+            const userInput = document.getElementById('userInput').value.trim();
+            const feedback = document.getElementById('feedback');
+
+            if (selectedItem === null) {
+                feedback.textContent = "Пожалуйста, выберите предмет на картинке.";
+                return;
+            }
+
+            if (userInput.toLowerCase() === items[selectedItem].toLowerCase()) {
+                feedback.textContent = "Правильно! Молодец!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = `Неправильно. Правильный ответ: ${items[selectedItem]}.`;
+                feedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+</body>
+</html>
