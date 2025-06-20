@@ -1,0 +1,145 @@
+.body 2{background-image: url(f.jpg);
+background-position: right top;
+background-attachment: fixed}
+ .hidden { display: none}
+ 
+body		{	color: #3b4043;
+			background-color: #f8f8f8;
+			font-family: Verdana, Arial, Sans-sarif;
+			margin: 0px}
+p		{	font-size: 12pt;
+			text-indent: 5mm;
+			text-align: justify}
+
+H1, H2, H6 { font-weight: normal;
+			font-family: Arial, sans-serif;
+			 letter-spacing: 1mm;
+			 text-shadow: #CDD9DB 1px 1px }
+ 
+H1 		{ font-size: 20pt }
+H2		 { font-size: 18pt }
+H6		 { font-size: 12pt }
+
+TABLE { font-size: 10pt;
+		margin: 10px 0px;
+		border: thin solid #b1bec6;
+		border-collapse: collapse }
+		
+td, th {	padding: 10px:
+		border: thin dotted #b1bec6}
+		
+caption {	text-align: left}
+		
+BLOCKQUOTE P, ADDRESS { font-size: 10pt;
+ font-style: italic }
+ 
+ADDRESS { text-align: right }
+
+UL		 { list-style-type: circle }
+
+#navbar { font-family: arial, sans-serif;
+		font-size: 14px;
+		text-transform: uppercase;
+		list-style-type: none;
+		margin-left: -30px;
+		}
+
+#navbar li 
+		{
+		padding: 5px 10px;
+		margin: 10px 0px;
+		border: thin solid #b1bec6;
+		cursor: pointer
+		}
+		
+#navbar li ul {fill: #f3f3f4;
+			list-style-type: none;
+			margin-left: -20px;
+			margin-top: 10px}
+			
+#navbar li ul li{
+			font-size: 12px;
+			padding: 2px;
+			margin: 0px 0px;
+			border: thin solid #f8f8f8;
+			cursor: pointer
+			}
+
+			
+ #cheader { width: 1010px;
+		padding: 0 20px;
+		border-bottom: thin dotted #b1bec6}
+ 
+ #cnav	{float: left;
+		height: 570px;
+		width: 250px;
+		overflow: auto;
+		margin-right: 10px
+		}
+
+ 
+ #cmain	{float: left;
+		height: 570px;
+		width: 760px;
+		overflow: auto;
+		padding: 5px;
+		border-left: thin dotted #b1bec6
+		}
+ 
+ #ccr 	{clear: both;
+		width: 1010px;
+		padding: 10px 20px 0px 20px;
+		border-top: thin dotted #b1bec6
+		}
+	
+#DFN	{
+		outline: thin dotted #b1bec6
+		}
+		
+A:link	{	color: #576c8c;
+			text-decoration:none}
+
+A:visited	{ color: #a1afba;
+				text-decoration: none}
+				
+A:focus, A:hover,
+	A:active { color: #576c8c;
+			   text-decoration: underline}
+			   
+#navbar A:link,
+	#navbar A:visited 
+			{ color: #576c8c;
+			text-decoration:none}
+			
+#navbar A:focus, #navbar A:hover,
+	#navbar A:active 
+			{ color: #576c8c;
+			   text-decoration: underline}
+			   
+#cmain > P:first-child:first-letter
+			{	font-size: 18pt;
+				font-weight: bold }
+				
+				
+.table-html-versions TD:first-child,
+	.table-html-versions TD:nth-child(2)
+			{	text-align: center }
+			
+.hovered	{	border-color: #3b4043 !important }			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		
